@@ -7,6 +7,7 @@
 #include "GameFramework/PlayerController.h"
 #include "AuraPlayerController.generated.h"
 
+class IEnemyInterface;
 class UInputAction;
 class UInputMappingContext;
 struct FInputActionValue;
@@ -22,11 +23,16 @@ class AURA_API AAuraPlayerController : public APlayerController
 public:
 	AAuraPlayerController();
 
+	/** <APlayerController> */
+	virtual void PlayerTick(float DeltaTime) override;
+	/** </APlayerController> */
+
 protected:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
 
 private:
+	void CursorTrace();
 	void Look(const FInputActionValue& InputActionValue);
 	void Move(const FInputActionValue& InputActionValue);
 
@@ -38,4 +44,7 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Input")
 	TObjectPtr<UInputAction> MoveAction;
+
+	TObjectPtr<IEnemyInterface> LastActor;
+	TObjectPtr<IEnemyInterface> ThisActor;
 };
