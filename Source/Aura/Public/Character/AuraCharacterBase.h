@@ -16,13 +16,13 @@ class AURA_API AAuraCharacterBase : public ACharacter, public IAbilitySystemInte
 	GENERATED_BODY()
 
 public:
-	/** <AActor> */
+	//~ Begin AActor Interface.
 	AAuraCharacterBase();
-	/** </AActor> */
+	//~ End AActor Interface.
 
-	/** <IAbilitySystemInterface> */
+	//~ Begin IAbilitySystemInterface Interface.
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
-	/** </IAbilitySystemInterface> */
+	//~ End IAbilitySystemInterface Interface.
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 
 protected:

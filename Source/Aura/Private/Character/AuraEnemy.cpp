@@ -39,3 +39,10 @@ void AAuraEnemy::UnhighlightActor()
 		Weapon->SetRenderCustomDepth(false);
 	}
 }
+
+void AAuraEnemy::BeginPlay()
+{
+	Super::BeginPlay();
+
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+}
