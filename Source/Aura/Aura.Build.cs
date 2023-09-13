@@ -14,12 +14,12 @@ public class Aura : ModuleRules
 			"CoreUObject",
 			"Engine",
 			"EnhancedInput",
+			"GameplayAbilities",
 			"InputCore",
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
-			"GameplayAbilities",
 			"GameplayTags",
 			"GameplayTasks",
 		});
