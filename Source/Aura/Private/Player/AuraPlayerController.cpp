@@ -34,6 +34,13 @@ void AAuraPlayerController::SetupInputComponent()
 
 	UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(InputComponent);
 	EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AAuraPlayerController::Move);
+	EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AAuraPlayerController::Look);
+}
+
+void AAuraPlayerController::Look(const FInputActionValue& InputActionValue)
+{
+	const FVector LookAxisValue = InputActionValue.Get<FVector>();
+	AddYawInput(LookAxisValue.X);
 }
 
 void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
