@@ -26,7 +26,9 @@ public:
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 
 protected:
+	//~ Begin AActor Interface.
 	virtual void BeginPlay() override;
+	//~ End AActor Interface.
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	TObjectPtr<USkeletalMeshComponent> Weapon;
