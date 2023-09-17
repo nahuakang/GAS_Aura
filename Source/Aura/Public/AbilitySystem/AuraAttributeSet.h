@@ -25,7 +25,11 @@ public:
 
 	//~ Begin AActor Interface.
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-	//~ Begin AActor Interface.
+	//~ End AActor Interface.
+
+	//~ Begin UAttributeSet Interface.
+	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
+	//~ End UAttributeSet Interface.
 
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Health, Category = "Vital Attributes")
 	FGameplayAttributeData Health;
