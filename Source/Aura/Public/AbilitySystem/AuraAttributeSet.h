@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemComponent.h"
 #include "AttributeSet.h"
-#include "AuraAbilitySystemComponent.h"
 #include "AuraAttributeSet.generated.h"
 
 
