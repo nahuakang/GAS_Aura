@@ -21,6 +21,15 @@ public:
 	//~ Begin IAbilitySystemInterface Interface.
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	//~ End IAbilitySystemInterface Interface.
+
+	//~ Begin AActor Interface.
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+	//~ End AActor Interface.
+
+	//~ Begin ICombatInterface Interface.
+	FORCEINLINE int32 GetPlayerLevel() const { return Level; }
+	//~ End ICombatInterface Interface.
+
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 
 protected:
@@ -29,4 +38,10 @@ protected:
 
 	UPROPERTY()
 	TObjectPtr<UAttributeSet> AttributeSet;
+
+	UPROPERTY(VisibleAnywhere, ReplicatedUsing=OnRep_Level)
+	int32 Level = 1;
+
+	UFUNCTION()
+	void OnRep_Level(int32 OldLevel);
 };
