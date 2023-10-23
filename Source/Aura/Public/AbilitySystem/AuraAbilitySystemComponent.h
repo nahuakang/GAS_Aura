@@ -15,6 +15,7 @@ class AURA_API UAuraAbilitySystemComponent : public UAbilitySystemComponent
 
 public:
 	void AbilityActorInfoSet();
+	void AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& StartupAbilities);
 
 	/** Delegate to broadcast when Duration/Instant Gameplay Effects are applied to this ASC */
 	FEffectAssetTags EffectAssetTags;
