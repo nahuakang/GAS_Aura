@@ -12,6 +12,7 @@
  * FORWARD DECLARATIONS
  */
 class IEnemyInterface;
+class UAuraAbilitySystemComponent;
 class UAuraInputConfig;
 class UInputAction;
 class UInputMappingContext;
@@ -40,10 +41,13 @@ private:
 	void AbilityInputTagHeld(FGameplayTag InputTag);
 	void AbilityInputTagPressed(FGameplayTag InputTag);
 	void AbilityInputTagReleased(FGameplayTag InputTag);
-
 	void CursorTrace();
+	UAuraAbilitySystemComponent* GetASC();
 	void Look(const FInputActionValue& InputActionValue);
 	void Move(const FInputActionValue& InputActionValue);
+
+	UPROPERTY()
+	TObjectPtr<UAuraAbilitySystemComponent> AuraAbilitySystemComponent;
 
 	UPROPERTY(EditAnywhere, Category = "Input")
 	TObjectPtr<UInputMappingContext> AuraContext;
