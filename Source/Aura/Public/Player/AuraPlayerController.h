@@ -16,6 +16,7 @@ class UAuraAbilitySystemComponent;
 class UAuraInputConfig;
 class UInputAction;
 class UInputMappingContext;
+class USplineComponent;
 struct FInputActionValue;
 
 /**
@@ -61,6 +62,20 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	TObjectPtr<UInputAction> MoveAction;
 
+	/** CURSOR TRACE */
 	IEnemyInterface* LastActor;
 	IEnemyInterface* ThisActor;
+
+	/** CLICK-TO-MOVE & AUTO-RUN */
+	UPROPERTY(EditDefaultsOnly)
+	float AutoRunAcceptanceRadius = 50.f;            // Acceptance threshold for triggering auto-run
+
+	bool bAutoRunning = false;                       // If auto-run
+	bool bTargeting = false;                         // If the mouse cursor is targeting an enemy
+	FVector CachedDestination = FVector::ZeroVector; // Cached destination for click-to-move or auto-run
+	float FollowTime = 0.f;                          // Cumulative time of following pressed mouse button
+	float ShortPressThreshold = 0.5f;                // Threshold for short pressing mouse button
+
+	UPROPERTY(VisibleAnywhere)
+	TObjectPtr<USplineComponent> Spline;             // Spline component for auto-run around obstacles
 };
