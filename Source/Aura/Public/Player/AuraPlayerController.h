@@ -39,9 +39,12 @@ protected:
 	virtual void SetupInputComponent() override;
 
 private:
+	/** CLICK-TO-MOVE & AUTO-RUN */
 	void AbilityInputTagHeld(FGameplayTag InputTag);
 	void AbilityInputTagPressed(FGameplayTag InputTag);
 	void AbilityInputTagReleased(FGameplayTag InputTag);
+	void AutoRun();
+
 	void CursorTrace();
 	UAuraAbilitySystemComponent* GetASC();
 	void Look(const FInputActionValue& InputActionValue);
@@ -68,7 +71,7 @@ private:
 
 	/** CLICK-TO-MOVE & AUTO-RUN */
 	UPROPERTY(EditDefaultsOnly)
-	float AutoRunAcceptanceRadius = 50.f;            // Acceptance threshold for triggering auto-run
+	float AutoRunAcceptanceRadius = 50.f;            // Acceptance threshold for stopping auto-run
 
 	bool bAutoRunning = false;                       // If auto-run
 	bool bTargeting = false;                         // If the mouse cursor is targeting an enemy
