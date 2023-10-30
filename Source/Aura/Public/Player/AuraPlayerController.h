@@ -66,6 +66,7 @@ private:
 	TObjectPtr<UInputAction> MoveAction;
 
 	/** CURSOR TRACE */
+	FHitResult CursorHit;
 	IEnemyInterface* LastActor;
 	IEnemyInterface* ThisActor;
 

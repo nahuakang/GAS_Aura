@@ -75,8 +75,8 @@ void AAuraPlayerController::AbilityInputTagHeld(FGameplayTag InputTag)
 	else
 	{
 		FollowTime += GetWorld()->GetDeltaSeconds();
-		FHitResult Hit;
-		if (GetHitResultUnderCursor(ECC_Visibility, false, Hit)) CachedDestination = Hit.ImpactPoint; // or Hit.Location
+
+		if (CursorHit.bBlockingHit) CachedDestination = CursorHit.ImpactPoint; // or CursorHit.Location
 
 		if (APawn* ControlledPawn = GetPawn())
 		{
@@ -118,7 +118,6 @@ void AAuraPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 				for (const FVector& PointLocation : NavPath->PathPoints)
 				{
 					Spline->AddSplinePoint(PointLocation, ESplineCoordinateSpace::World);
-					DrawDebugSphere(GetWorld(), PointLocation, 8.f, 8, FColor::Green, false, 5.f);
 				}
 
 				CachedDestination = NavPath->PathPoints[NavPath->PathPoints.Num() - 1]; // Check if close enough to the last point instead of the "destination" which can be a mesh that's not reachable
@@ -151,34 +150,16 @@ void AAuraPlayerController::AutoRun()
 
 void AAuraPlayerController::CursorTrace()
 {
-	FHitResult CursorHit;
 	GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
 	if (!CursorHit.bBlockingHit) return;
 
 	LastActor = ThisActor;
 	ThisActor = Cast<IEnemyInterface>(CursorHit.GetActor());
 
-	if (LastActor == nullptr)
+	if (LastActor != ThisActor)
 	{
-		if (ThisActor != nullptr)
-		{
-			ThisActor->HighlightActor();
-		}
-	}
-	else
-	{
-		if (ThisActor == nullptr)
-		{
-			LastActor->UnhighlightActor();
-		}
-		else
-		{
-			if (LastActor != ThisActor)
-			{
-				LastActor->UnhighlightActor();
-				ThisActor->HighlightActor();
-			}
-		}
+		if (LastActor) LastActor->UnhighlightActor();
+		if (ThisActor) ThisActor->HighlightActor();
 	}
 }
 
