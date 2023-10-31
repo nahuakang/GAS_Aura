@@ -33,6 +33,10 @@ protected:
 	virtual void BeginPlay() override;
 	//~ End AActor Interface.
 
+	//~ Begin Combat Interface.
+	virtual FVector GetCombatSocketLocation() override;
+	//~ End Combat Interface.
+
 	virtual void InitAbilityActorInfo();
 
 	void AddCharacterAbilities();
@@ -41,6 +45,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	TObjectPtr<USkeletalMeshComponent> Weapon;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	FName WeaponTipSocketName;
 
 	UPROPERTY()
 	TObjectPtr<UAttributeSet> AttributeSet;
