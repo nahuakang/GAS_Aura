@@ -3,14 +3,18 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Data/CharacterClassInfo.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "AuraAbilitySystemLibrary.generated.h"
 
-class UAttributeMenuWidgetController;
+
 /**
  * FORWARD DECLARATIONS
  */
+class UAbilitySystemComponent;
+class UAttributeMenuWidgetController;
 class UOverlayWidgetController;
+
 
 /**
  * UAuraAbilitySystemLibrary is a Blueprint Function Library for Aura game.
@@ -28,4 +32,6 @@ public:
 	UFUNCTION(BlueprintPure, Category = "AuraAbilitySystemLibrary|WidgetController")
 	static UAttributeMenuWidgetController* GetAttributeMenuWidgetController(const UObject* WorldContextObject);
 
+	UFUNCTION(BlueprintCallable, Category = "AuraAbilitySystemLibrary|ClassDefaults")
+	static void InitializeDefaultAttributes(const UObject* WorldContextObject, ECharacterClass CharacterClass, float Level, UAbilitySystemComponent* ASC);
 };
