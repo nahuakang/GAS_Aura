@@ -8,6 +8,7 @@
 
 
 /** FORWARD DECLARATIONS */
+class UGameplayAbility;
 class UGameplayEffect;
 
 
@@ -43,6 +44,10 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Character Class Defaults")
 	TMap<ECharacterClass, FCharacterClassDefaultInfo> CharacterClassInformation;
+
+	// Shared GameplayAbilities for AuraEnemy
+	UPROPERTY(EditDefaultsOnly, Category = "Common Class Defaults")
+	TArray<TSubclassOf<UGameplayAbility>> CommonAbilities;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Common Class Defaults")
 	TSubclassOf<UGameplayEffect> SecondaryAttributes;
