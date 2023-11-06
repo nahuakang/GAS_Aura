@@ -6,6 +6,8 @@
 #include "UObject/Interface.h"
 #include "CombatInterface.generated.h"
 
+class UAnimMontage;
+
 UINTERFACE(MinimalAPI, BlueprintType)
 class UCombatInterface : public UInterface
 {
@@ -18,6 +20,11 @@ class AURA_API ICombatInterface
 
 public:
 	virtual FVector GetCombatSocketLocation();
+
+	// BlueprintNativeEvent can be used on BP but also override-able in C++; additionally make it BlueprintCallable
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	UAnimMontage* GetHitReactMontage();
+
 	virtual int32 GetPlayerLevel();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)

@@ -11,6 +11,7 @@
 class UGameplayAbility;
 class UAttributeSet;
 class UAbilitySystemComponent;
+class UAnimMontage;
 class UGameplayEffect;
 
 UCLASS()
@@ -35,6 +36,7 @@ protected:
 
 	//~ Begin Combat Interface.
 	virtual FVector GetCombatSocketLocation() override;
+	virtual UAnimMontage* GetHitReactMontage_Implementation() override;
 	//~ End Combat Interface.
 
 	virtual void InitAbilityActorInfo();
@@ -65,6 +67,9 @@ protected:
 	TSubclassOf<UGameplayEffect> DefaultVitalAttributes;
 
 private:
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TObjectPtr<UAnimMontage> HitReactMontage;
+
 	UPROPERTY(EditAnywhere, Category = "Abilities")
 	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
 
