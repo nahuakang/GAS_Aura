@@ -24,10 +24,17 @@ public:
 	AAuraCharacterBase();
 	//~ End AActor Interface.
 
+	//~ Begin Combat Interface.
+	virtual void Die() override;
+	//~ End Combat Interface.
+
 	//~ Begin IAbilitySystemInterface Interface.
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	//~ End IAbilitySystemInterface Interface.
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
+
+	UFUNCTION(NetMulticast, Reliable)
+	virtual void MulticastHandleDeath();
 
 protected:
 	//~ Begin AActor Interface.

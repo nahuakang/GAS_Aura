@@ -19,6 +19,8 @@ class AURA_API ICombatInterface
 	GENERATED_BODY()
 
 public:
+	virtual void Die() = 0;
+
 	virtual FVector GetCombatSocketLocation();
 
 	// BlueprintNativeEvent can be used on BP but also override-able in C++; additionally make it BlueprintCallable
