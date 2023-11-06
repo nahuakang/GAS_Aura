@@ -84,7 +84,7 @@ void AAuraEffectActor::OnEndOverlap(AActor* TargetActor)
 		{
 			if (TargetAbilitySystemComponent == HandlePair.Value)
 			{
-				// NOTE: Removing only 1 stack instead of the default all stacks
+				// NOTE: Removing only 1 stack instead of the default all stacks (since it's possible to remove all stacks of a GameplayEffect)
 				// NOTE: Useful if we want multiple other overlapping areas to have effects on the character when one is exited
 				TargetAbilitySystemComponent->RemoveActiveGameplayEffect(HandlePair.Key, 1);
 				HandlesToRemove.Add(HandlePair.Key);
