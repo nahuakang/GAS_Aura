@@ -8,16 +8,17 @@
 #include "GameplayTagContainer.h"
 #include "AuraPlayerController.generated.h"
 
-/**
- * FORWARD DECLARATIONS
- */
+
+/** FORWARD DECLARATIONS */
 class IEnemyInterface;
 class UAuraAbilitySystemComponent;
 class UAuraInputConfig;
+class UDamageTextComponent;
 class UInputAction;
 class UInputMappingContext;
 class USplineComponent;
 struct FInputActionValue;
+
 
 /**
  *
@@ -33,6 +34,9 @@ public:
 	//~ Begin APlayerController Interface.
 	virtual void PlayerTick(float DeltaTime) override;
 	//~ End APlayerController Interface.
+
+	UFUNCTION(Client, Reliable)
+	void ShowDamageNumber(float DamageAmount, ACharacter* TargetCharacter);
 
 protected:
 	virtual void BeginPlay() override;
@@ -59,6 +63,9 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Input")
 	TObjectPtr<UInputMappingContext> AuraContext;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UDamageTextComponent> DamageTextComponentClass;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	TObjectPtr<UAuraInputConfig> InputConfig;
