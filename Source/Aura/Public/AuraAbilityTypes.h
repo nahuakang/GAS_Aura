@@ -19,8 +19,41 @@ public:
 	{
 		return FGameplayEffectContext::StaticStruct();
 	}
+
+	/** UE5.3: Returns the actual struct used for serialization, subclasses must override this! */
+	// virtual UScriptStruct* GetScriptStruct() const
+	// {
+	// 	return StaticStruct();
+	// }
+
 	/** Custom serialization, subclasses must override this */
 	virtual bool NetSerialize(FArchive& Ar, class UPackageMap* Map, bool& bOutSuccess);
+
+	/** Creates a copy of this context, used to duplicate for later modifications */
+	virtual FGameplayEffectContext* Duplicate() const
+	{
+		FGameplayEffectContext* NewContext = new FGameplayEffectContext();
+		*NewContext = *this;
+		if (GetHitResult())
+		{
+			// Does a deep copy of the hit result
+			NewContext->AddHitResult(*GetHitResult(), true);
+		}
+		return NewContext;
+	}
+
+	/** UE5.3: Creates a copy of this context, used to duplicate for later modifications */
+	// virtual FAuraGameplayEffectContext* Duplicate() const
+	// {
+	// 	FAuraGameplayEffectContext* NewContext = new FAuraGameplayEffectContext();
+	// 	*NewContext = *this;
+	// 	if (GetHitResult())
+	// 	{
+	// 		// Does a deep copy of the hit result
+	// 		NewContext->AddHitResult(*GetHitResult(), true);
+	// 	}
+	// 	return NewContext;
+	// }
 
 	//~End FGameplayEffectContext Interface
 
@@ -36,4 +69,14 @@ protected:
 
 	UPROPERTY()
 	bool bIsCriticalHit = false;
+};
+
+template<>
+struct TStructOpsTypeTraits<FAuraGameplayEffectContext> : TStructOpsTypeTraitsBase2<FAuraGameplayEffectContext>
+{
+	enum
+	{
+		WithNetSerializer = true,
+		WithCopy = true
+	};
 };
