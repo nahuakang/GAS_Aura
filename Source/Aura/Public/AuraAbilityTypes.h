@@ -61,7 +61,7 @@ public:
 	bool IsBlockedHit() const { return bIsBlockedHit; }
 
 	void SetIsCriticalHit(bool bInIsCriticalHit) { bIsCriticalHit = bInIsCriticalHit; }
-	void SetIsblockedHit(bool bInIsBlockedHit) { bIsBlockedHit = bInIsBlockedHit; }
+	void SetIsBlockedHit(bool bInIsBlockedHit) { bIsBlockedHit = bInIsBlockedHit; }
 
 protected:
 	UPROPERTY()
