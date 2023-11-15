@@ -37,11 +37,11 @@ UOverlayWidgetController* AAuraHUD::GetOverlayWidgetController(const FWidgetCont
 }
 
 void AAuraHUD::InitOverlay(
-	APlayerController* PlayerController,
-	APlayerState* PlayerState,
+	APlayerController*       PlayerController,
+	APlayerState*            PlayerState,
 	UAbilitySystemComponent* AbilitySystemComponent,
-	UAttributeSet* AttributeSet
-)
+	UAttributeSet*           AttributeSet
+	)
 {
 	checkf(OverlayWidgetClass, TEXT("OverlayWidgetClass uninitialized. Please fill it out in BP_AuraHUD"));
 	checkf(OverlayWidgetControllerClass, TEXT("OverlayWidgetControllerClass uninitialized. Please fill it out in BP_AuraHUD"));
@@ -50,7 +50,7 @@ void AAuraHUD::InitOverlay(
 	OverlayWidget = Cast<UAuraUserWidget>(Widget);
 
 	const FWidgetControllerParams WidgetControllerParams(PlayerController, PlayerState, AbilitySystemComponent, AttributeSet);
-	UOverlayWidgetController* WidgetController = GetOverlayWidgetController(WidgetControllerParams);
+	UOverlayWidgetController*     WidgetController = GetOverlayWidgetController(WidgetControllerParams);
 
 	OverlayWidget->SetWidgetController(WidgetController);
 	WidgetController->BroadcastInitialValues(); // Broadcast after Widget is hooked to the widget controller

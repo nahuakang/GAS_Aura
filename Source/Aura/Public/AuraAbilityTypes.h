@@ -21,13 +21,13 @@ public:
 	// }
 
 	/** UE5.3: Returns the actual struct used for serialization, subclasses must override this! */
-	virtual UScriptStruct* GetScriptStruct() const
+	virtual UScriptStruct* GetScriptStruct() const override
 	{
 		return StaticStruct();
 	}
 
 	/** Custom serialization, subclasses must override this */
-	virtual bool NetSerialize(FArchive& Ar, class UPackageMap* Map, bool& bOutSuccess);
+	virtual bool NetSerialize(FArchive& Ar, class UPackageMap* Map, bool& bOutSuccess) override;
 
 	/** UE5.2: Creates a copy of this context, used to duplicate for later modifications */
 	// virtual FGameplayEffectContext* Duplicate() const
@@ -43,7 +43,7 @@ public:
 	// }
 
 	/** UE5.3: Creates a copy of this context, used to duplicate for later modifications */
-	virtual FAuraGameplayEffectContext* Duplicate() const
+	virtual FAuraGameplayEffectContext* Duplicate() const override
 	{
 		FAuraGameplayEffectContext* NewContext = new FAuraGameplayEffectContext();
 		*NewContext = *this;
@@ -71,7 +71,7 @@ protected:
 	bool bIsCriticalHit = false;
 };
 
-template<>
+template <>
 struct TStructOpsTypeTraits<FAuraGameplayEffectContext> : TStructOpsTypeTraitsBase2<FAuraGameplayEffectContext>
 {
 	enum

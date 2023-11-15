@@ -20,7 +20,7 @@ struct FEffectProperties
 {
 	GENERATED_BODY()
 
-	FEffectProperties(){}
+	FEffectProperties() {}
 
 	FGameplayEffectContextHandle EffectContextHandle;
 
@@ -52,7 +52,7 @@ struct FEffectProperties
 
 // The typedef below is specific to FGameplayAttribute() signature, but TStaticFuncPtr is generic to any signature chosen.
 // typedef TBaseStaticDelegateInstance<FGameplayAttribute(), FDefaultDelegateUserPolicy>::FFuncPtr FAttributeFuncPtr;
-template<class T>
+template <class T>
 using TStaticFuncPtr = typename TBaseStaticDelegateInstance<T, FDefaultDelegateUserPolicy>::FFuncPtr;
 
 

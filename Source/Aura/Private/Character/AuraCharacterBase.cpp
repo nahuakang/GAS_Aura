@@ -60,7 +60,10 @@ void AAuraCharacterBase::BeginPlay()
 void AAuraCharacterBase::AddCharacterAbilities()
 {
 	UAuraAbilitySystemComponent* AuraASC = CastChecked<UAuraAbilitySystemComponent>(AbilitySystemComponent);
-	if (!HasAuthority()) return;
+	if (!HasAuthority())
+	{
+		return;
+	}
 
 	AuraASC->AddCharacterAbilities(StartupAbilities);
 }
@@ -106,9 +109,7 @@ UAnimMontage* AAuraCharacterBase::GetHitReactMontage_Implementation()
 	return HitReactMontage;
 }
 
-void AAuraCharacterBase::InitAbilityActorInfo()
-{
-}
+void AAuraCharacterBase::InitAbilityActorInfo() {}
 
 void AAuraCharacterBase::InitializeDefaultAttributes() const
 {

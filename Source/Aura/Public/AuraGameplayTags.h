@@ -12,8 +12,8 @@
  */
 struct FAuraGameplayTags
 {
-    static const FAuraGameplayTags& Get() { return GameplayTags; }
-    static void InitializeNativeGameplayTags();
+	static const FAuraGameplayTags& Get() { return GameplayTags; }
+	static void                     InitializeNativeGameplayTags();
 
 	/** Primary Attributes */
 	FGameplayTag Attributes_Primary_Strength;
@@ -22,7 +22,7 @@ struct FAuraGameplayTags
 	FGameplayTag Attributes_Primary_Vigor;
 
 	/** Secondary Attributes */
-    FGameplayTag Attributes_Secondary_Armor;
+	FGameplayTag Attributes_Secondary_Armor;
 	FGameplayTag Attributes_Secondary_ArmorPenetration;
 	FGameplayTag Attributes_Secondary_BlockChance;
 	FGameplayTag Attributes_Secondary_CriticalHitChance;
@@ -57,5 +57,5 @@ struct FAuraGameplayTags
 	TMap<FGameplayTag, FGameplayTag> DamageTypesToResistances;
 
 private:
-    static FAuraGameplayTags GameplayTags;
+	static FAuraGameplayTags GameplayTags;
 };

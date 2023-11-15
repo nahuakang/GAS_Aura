@@ -15,11 +15,10 @@ void UAttributeMenuWidgetController::BindCallbacksToDependencies()
 	for (auto& Pair : AS->TagsToAttributes)
 	{
 		AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(Pair.Value()).AddLambda(
-			[this, Pair](const FOnAttributeChangeData& Data)
-			{
+			[this, Pair](const FOnAttributeChangeData& Data) {
 				BroadcastAttributeInfo(Pair.Key, Pair.Value());
 			}
-		);
+			);
 	}
 }
 
@@ -36,7 +35,7 @@ void UAttributeMenuWidgetController::BroadcastInitialValues()
 }
 
 void UAttributeMenuWidgetController::BroadcastAttributeInfo(const FGameplayTag& AttributeTag,
-	const FGameplayAttribute& Attribute) const
+	const FGameplayAttribute&                                                   Attribute) const
 {
 	FAuraAttributeInfo Info = AttributeInfo->FindAttributeInfoForTag(AttributeTag);
 	Info.AttributeValue = Attribute.GetNumericValue(AttributeSet); // This is a function pointer (See AuraAttributeSet.h -> TagsToAttributes)

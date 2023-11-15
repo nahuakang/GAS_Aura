@@ -28,7 +28,7 @@ public:
 	//~ End IEnemyInterface Interface.
 
 	//~ Begin ICombatInterface Interface.
-	virtual void Die() override;
+	virtual void  Die() override;
 	virtual int32 GetPlayerLevel() override;
 	//~ End ICombatInterface Interface.
 
@@ -53,7 +53,7 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void InitAbilityActorInfo() override;
 	//~ Begin AAuraCharacterBase Interface
-	virtual void InitializeDefaultAttributes() const;
+	virtual void InitializeDefaultAttributes() const override;
 	//~ End AAuraCharacterBase Interface
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)

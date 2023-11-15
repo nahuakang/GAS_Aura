@@ -82,24 +82,22 @@ void AAuraEnemy::BeginPlay()
 	if (const UAuraAttributeSet* AuraAS = Cast<UAuraAttributeSet>(AttributeSet))
 	{
 		AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AuraAS->GetHealthAttribute()).AddLambda(
-			[this](const FOnAttributeChangeData& Data)
-			{
+			[this](const FOnAttributeChangeData& Data) {
 				OnHealthChanged.Broadcast(Data.NewValue);
 			}
-		);
+			);
 
 		AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AuraAS->GetMaxHealthAttribute()).AddLambda(
-			[this](const FOnAttributeChangeData& Data)
-			{
+			[this](const FOnAttributeChangeData& Data) {
 				OnMaxHealthChanged.Broadcast(Data.NewValue);
 			}
-		);
+			);
 
 		// Whenever Effects.HitReact tag is registered or removed, this callback (HitReactTagChanged) is called
 		AbilitySystemComponent->RegisterGameplayTagEvent(FAuraGameplayTags::Get().Effects_HitReact, EGameplayTagEventType::NewOrRemoved).AddUObject(
 			this,
 			&AAuraEnemy::HitReactTagChanged
-		);
+			);
 
 		OnHealthChanged.Broadcast(AuraAS->GetHealth());
 		OnMaxHealthChanged.Broadcast(AuraAS->GetMaxHealth());

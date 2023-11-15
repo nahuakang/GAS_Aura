@@ -3,10 +3,9 @@
 
 #include "Input/AuraInputConfig.h"
 
-const UInputAction* UAuraInputConfig::FindAbilityInputActionForTag(const FGameplayTag& InputTag,
-	bool bLogNotFound) const
+const UInputAction* UAuraInputConfig::FindAbilityInputActionForTag(const FGameplayTag& InputTag, bool bLogNotFound) const
 {
-	for (const FAuraInputAction& Action: AbilityInputActions)
+	for (const FAuraInputAction& Action : AbilityInputActions)
 	{
 		if (Action.InputAction && Action.InputTag == InputTag)
 		{

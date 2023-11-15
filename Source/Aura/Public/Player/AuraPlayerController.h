@@ -49,12 +49,12 @@ private:
 	void AbilityInputTagReleased(FGameplayTag InputTag);
 	void AutoRun();
 
-	void CursorTrace();
+	void                         CursorTrace();
 	UAuraAbilitySystemComponent* GetASC();
-	void Look(const FInputActionValue& InputActionValue);
-	void Move(const FInputActionValue& InputActionValue);
-	void ShiftPressed() { bShiftKeyDown = true; };
-	void ShiftReleased() { bShiftKeyDown = false; };
+	void                         Look(const FInputActionValue& InputActionValue);
+	void                         Move(const FInputActionValue& InputActionValue);
+	void                         ShiftPressed() { bShiftKeyDown = true; };
+	void                         ShiftReleased() { bShiftKeyDown = false; };
 
 	bool bShiftKeyDown = false;
 
@@ -80,20 +80,20 @@ private:
 	TObjectPtr<UInputAction> ShiftAction;
 
 	/** CURSOR TRACE */
-	FHitResult CursorHit;
+	FHitResult       CursorHit;
 	IEnemyInterface* LastActor;
 	IEnemyInterface* ThisActor;
 
 	/** CLICK-TO-MOVE & AUTO-RUN */
 	UPROPERTY(EditDefaultsOnly)
-	float AutoRunAcceptanceRadius = 50.f;            // Acceptance threshold for stopping auto-run
+	float AutoRunAcceptanceRadius = 50.f; // Acceptance threshold for stopping auto-run
 
-	bool bAutoRunning = false;                       // If auto-run
-	bool bTargeting = false;                         // If the mouse cursor is targeting an enemy
+	bool    bAutoRunning = false;                    // If auto-run
+	bool    bTargeting = false;                      // If the mouse cursor is targeting an enemy
 	FVector CachedDestination = FVector::ZeroVector; // Cached destination for click-to-move or auto-run
-	float FollowTime = 0.f;                          // Cumulative time of following pressed mouse button
-	float ShortPressThreshold = 0.5f;                // Threshold for short pressing mouse button
+	float   FollowTime = 0.f;                        // Cumulative time of following pressed mouse button
+	float   ShortPressThreshold = 0.5f;              // Threshold for short pressing mouse button
 
 	UPROPERTY(VisibleAnywhere)
-	TObjectPtr<USplineComponent> Spline;             // Spline component for auto-run around obstacles
+	TObjectPtr<USplineComponent> Spline; // Spline component for auto-run around obstacles
 };

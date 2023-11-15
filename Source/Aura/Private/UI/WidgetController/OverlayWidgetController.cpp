@@ -11,35 +11,30 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 	const UAuraAttributeSet* AuraAttributeSet = CastChecked<UAuraAttributeSet>(AttributeSet);
 
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AuraAttributeSet->GetHealthAttribute()).AddLambda(
-		[this](const FOnAttributeChangeData& Data)
-		{
+		[this](const FOnAttributeChangeData& Data) {
 			OnHealthChanged.Broadcast(Data.NewValue);
 		}
-	);
+		);
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AuraAttributeSet->GetMaxHealthAttribute()).AddLambda(
-		[this](const FOnAttributeChangeData& Data)
-		{
+		[this](const FOnAttributeChangeData& Data) {
 			OnMaxHealthChanged.Broadcast(Data.NewValue);
 		}
-	);
+		);
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AuraAttributeSet->GetManaAttribute()).AddLambda(
-		[this](const FOnAttributeChangeData& Data)
-		{
+		[this](const FOnAttributeChangeData& Data) {
 			OnManaChanged.Broadcast(Data.NewValue);
 		}
-	);
+		);
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AuraAttributeSet->GetMaxManaAttribute()).AddLambda(
-		[this](const FOnAttributeChangeData& Data)
-		{
+		[this](const FOnAttributeChangeData& Data) {
 			OnMaxManaChanged.Broadcast(Data.NewValue);
 		}
-	);
+		);
 
 	Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent)->EffectAssetTags.AddLambda(
 		// Using `this` allows us to capture the object we're in and use `GetDataTableRowByTag` member method
-		[this](const FGameplayTagContainer& AssetTags)
-		{
-			for (const FGameplayTag& Tag: AssetTags)
+		[this](const FGameplayTagContainer& AssetTags) {
+			for (const FGameplayTag& Tag : AssetTags)
 			{
 				// For example, if Tag = Message.HealthPotion
 				// "Message.HealthPotion".MatchesTag("Message") will return True
@@ -52,7 +47,7 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 				}
 			}
 		}
-	);
+		);
 }
 
 void UOverlayWidgetController::BroadcastInitialValues()

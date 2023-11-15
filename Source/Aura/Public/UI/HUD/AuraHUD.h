@@ -21,8 +21,8 @@ class AURA_API AAuraHUD : public AHUD
 
 public:
 	UAttributeMenuWidgetController* GetAttributeMenuWidgetController(const FWidgetControllerParams& WidgetControllerParams);
-	UOverlayWidgetController* GetOverlayWidgetController(const FWidgetControllerParams& WidgetControllerParams);
-	void InitOverlay(APlayerController* PlayerController, APlayerState* PlayerState, UAbilitySystemComponent* AbilitySystemComponent, UAttributeSet* AttributeSet);
+	UOverlayWidgetController*       GetOverlayWidgetController(const FWidgetControllerParams& WidgetControllerParams);
+	void                            InitOverlay(APlayerController* PlayerController, APlayerState* PlayerState, UAbilitySystemComponent* AbilitySystemComponent, UAttributeSet* AttributeSet);
 
 private:
 	UPROPERTY()

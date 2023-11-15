@@ -55,7 +55,7 @@ protected:
 	//~ End Dissolve Effects
 
 	//~ Begin Combat Interface.
-	virtual FVector GetCombatSocketLocation() override;
+	virtual FVector       GetCombatSocketLocation() override;
 	virtual UAnimMontage* GetHitReactMontage_Implementation() override;
 	//~ End Combat Interface.
 

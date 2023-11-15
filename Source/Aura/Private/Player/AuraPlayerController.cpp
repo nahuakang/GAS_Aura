@@ -80,19 +80,28 @@ void AAuraPlayerController::AbilityInputTagHeld(FGameplayTag InputTag)
 {
 	if (!InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
 	{
-		if (GetASC()) GetASC()->AbilityInputTagHeld(InputTag);
+		if (GetASC())
+		{
+			GetASC()->AbilityInputTagHeld(InputTag);
+		}
 		return;
 	}
 
 	if (bTargeting || bShiftKeyDown)
 	{
-		if (GetASC()) GetASC()->AbilityInputTagHeld(InputTag);
+		if (GetASC())
+		{
+			GetASC()->AbilityInputTagHeld(InputTag);
+		}
 	}
 	else
 	{
 		FollowTime += GetWorld()->GetDeltaSeconds();
 
-		if (CursorHit.bBlockingHit) CachedDestination = CursorHit.ImpactPoint; // or CursorHit.Location
+		if (CursorHit.bBlockingHit)
+		{
+			CachedDestination = CursorHit.ImpactPoint; // or CursorHit.Location
+		}
 
 		if (APawn* ControlledPawn = GetPawn())
 		{
@@ -107,7 +116,7 @@ void AAuraPlayerController::AbilityInputTagPressed(FGameplayTag InputTag)
 	if (InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
 	{
 		bTargeting = ThisActor ? true : false; // Check if cursor trace is targeting an actor
-		bAutoRunning = false; // When the left mouse button just pressed, we don't know if it's auto-run or click-to-move yet
+		bAutoRunning = false;                  // When the left mouse button just pressed, we don't know if it's auto-run or click-to-move yet
 	}
 }
 
@@ -115,11 +124,17 @@ void AAuraPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 {
 	if (!InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
 	{
-		if (GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
+		if (GetASC())
+		{
+			GetASC()->AbilityInputTagReleased(InputTag);
+		}
 		return;
 	}
 
-	if (GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
+	if (GetASC())
+	{
+		GetASC()->AbilityInputTagReleased(InputTag);
+	}
 
 	if (!bTargeting && !bShiftKeyDown)
 	{
@@ -146,7 +161,10 @@ void AAuraPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 
 void AAuraPlayerController::AutoRun()
 {
-	if (!bAutoRunning) return;
+	if (!bAutoRunning)
+	{
+		return;
+	}
 
 	if (APawn* ControlledPawn = GetPawn())
 	{
@@ -165,15 +183,24 @@ void AAuraPlayerController::AutoRun()
 void AAuraPlayerController::CursorTrace()
 {
 	GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
-	if (!CursorHit.bBlockingHit) return;
+	if (!CursorHit.bBlockingHit)
+	{
+		return;
+	}
 
 	LastActor = ThisActor;
 	ThisActor = Cast<IEnemyInterface>(CursorHit.GetActor());
 
 	if (LastActor != ThisActor)
 	{
-		if (LastActor) LastActor->UnhighlightActor();
-		if (ThisActor) ThisActor->HighlightActor();
+		if (LastActor)
+		{
+			LastActor->UnhighlightActor();
+		}
+		if (ThisActor)
+		{
+			ThisActor->HighlightActor();
+		}
 	}
 }
 
@@ -196,8 +223,8 @@ void AAuraPlayerController::Look(const FInputActionValue& InputActionValue)
 void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
 {
 	const FVector2D InputAxisVector = InputActionValue.Get<FVector2D>();
-	const FRotator Rotation = GetControlRotation();
-	const FRotator YawRotation(0.f, Rotation.Yaw, 0.f);
+	const FRotator  Rotation = GetControlRotation();
+	const FRotator  YawRotation(0.f, Rotation.Yaw, 0.f);
 
 	const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 	const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);

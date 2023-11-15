@@ -112,7 +112,8 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 				{
 					CombatInterface->Die();
 				}
-			} else
+			}
+			else
 			{
 				// Activate ability if the target has Effects_HitReact tag
 				FGameplayTagContainer TagContainer;

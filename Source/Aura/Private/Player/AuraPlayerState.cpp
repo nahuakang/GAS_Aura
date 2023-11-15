@@ -29,6 +29,4 @@ void AAuraPlayerState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 	DOREPLIFETIME(AAuraPlayerState, Level);
 }
 
-void AAuraPlayerState::OnRep_Level(int32 OldLevel)
-{
-}
+void AAuraPlayerState::OnRep_Level(int32 OldLevel) {}
