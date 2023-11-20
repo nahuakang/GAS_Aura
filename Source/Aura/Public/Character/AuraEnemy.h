@@ -11,6 +11,8 @@
 
 
 /** FORWARD DECLARATION */
+class AAuraAIController;
+class UBehaviorTree;
 class UWidgetComponent;
 
 
@@ -21,6 +23,10 @@ class AURA_API AAuraEnemy : public AAuraCharacterBase, public IEnemyInterface
 
 public:
 	AAuraEnemy();
+
+	//~ Begin APawn Interface
+	virtual void PossessedBy(AController* NewController) override;
+	//~ End APawn Interface
 
 	//~ Begin IEnemyInterface Interface.
 	virtual void HighlightActor() override;
@@ -55,6 +61,12 @@ protected:
 	//~ Begin AAuraCharacterBase Interface
 	virtual void InitializeDefaultAttributes() const override;
 	//~ End AAuraCharacterBase Interface
+
+	UPROPERTY()
+	TObjectPtr<AAuraAIController> AuraAIController;
+
+	UPROPERTY(EditAnywhere, Category = "AI")
+	TObjectPtr<UBehaviorTree> BehaviorTree;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<UWidgetComponent> HealthBar;
