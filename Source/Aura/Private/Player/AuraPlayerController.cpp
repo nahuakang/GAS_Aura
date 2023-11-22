@@ -149,9 +149,11 @@ void AAuraPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 					Spline->AddSplinePoint(PointLocation, ESplineCoordinateSpace::World);
 				}
 
-				CachedDestination = NavPath->PathPoints[NavPath->PathPoints.Num() - 1]; // Check if close enough to the last point instead of the "destination" which can be a mesh that's not reachable
-
-				bAutoRunning = true;
+				if (NavPath->PathPoints.Num() > 0)
+				{
+					CachedDestination = NavPath->PathPoints[NavPath->PathPoints.Num() - 1]; // Check if close enough to the last point instead of the "destination" which can be a mesh that's not reachable
+					bAutoRunning = true;
+				}
 			}
 		}
 		FollowTime = 0.f;
