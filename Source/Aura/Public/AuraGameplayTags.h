@@ -52,6 +52,8 @@ struct FAuraGameplayTags
 	FGameplayTag Damage_Lightning;
 	FGameplayTag Damage_Physical;
 
+	FGameplayTag Abilities_Attack;
+
 	FGameplayTag Effects_HitReact;
 
 	TMap<FGameplayTag, FGameplayTag> DamageTypesToResistances;
