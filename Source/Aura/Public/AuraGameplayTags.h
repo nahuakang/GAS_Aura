@@ -39,6 +39,7 @@ struct FAuraGameplayTags
 	FGameplayTag Attributes_Resistance_Lightning;
 	FGameplayTag Attributes_Resistance_Physical;
 
+	/** Input Tags */
 	FGameplayTag InputTag_LMB;
 	FGameplayTag InputTag_RMB;
 	FGameplayTag InputTag_1;
@@ -46,6 +47,7 @@ struct FAuraGameplayTags
 	FGameplayTag InputTag_3;
 	FGameplayTag InputTag_4;
 
+	/** Damage Tags */
 	FGameplayTag Damage;
 	FGameplayTag Damage_Arcane;
 	FGameplayTag Damage_Fire;
@@ -54,6 +56,12 @@ struct FAuraGameplayTags
 
 	FGameplayTag Abilities_Attack;
 
+	/** Attack Montage Tags */
+	FGameplayTag Montage_Attack_LeftHand;
+	FGameplayTag Montage_Attack_RightHand;
+	FGameplayTag Montage_Attack_Weapon;
+
+	/** Hit React Tag */
 	FGameplayTag Effects_HitReact;
 
 	TMap<FGameplayTag, FGameplayTag> DamageTypesToResistances;
