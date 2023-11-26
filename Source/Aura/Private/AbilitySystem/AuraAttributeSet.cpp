@@ -145,7 +145,14 @@ void UAuraAttributeSet::ShowFloatingText(const FEffectProperties& Props, float D
 	// Check not self-damage and then show damage amount via damage text component
 	if (Props.SourceCharacter != Props.TargetCharacter)
 	{
+		// If the source is the player and the target is the enemy, show damage number
 		if (AAuraPlayerController* PC = Cast<AAuraPlayerController>(Props.SourceCharacter->Controller))
+		{
+			PC->ShowDamageNumber(Damage, Props.TargetCharacter, bBlockedHit, bCriticalHit);
+			return;
+		}
+		// Below is for if the target is the player and the source is the enemy, show damage number
+		if (AAuraPlayerController* PC = Cast<AAuraPlayerController>(Props.TargetCharacter->Controller))
 		{
 			PC->ShowDamageNumber(Damage, Props.TargetCharacter, bBlockedHit, bCriticalHit);
 		}
