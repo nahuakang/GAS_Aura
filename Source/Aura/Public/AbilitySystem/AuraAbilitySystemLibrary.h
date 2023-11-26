@@ -38,6 +38,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "AuraAbilitySystemLibrary|ClassDefaults")
 	static void GiveStartupAbilities(const UObject* WorldContextObject, UAbilitySystemComponent* ASC, ECharacterClass CharacterClass);
 
+	UFUNCTION(BlueprintCallable, Category = "AuraAbilitySystemLibrary|GameplayMechanics")
+	static void GetLivePlayerWithinRadius(const UObject* WorldContextObject, TArray<AActor*>& OverlappingActors, const TArray<AActor*>& ActorsToIgnore, float Radius, const FVector& SphereOrigin);
+
 	UFUNCTION(BlueprintCallable, Category = "AuraAbilitySystemLibrary|ClassDefaults")
 	static void InitializeDefaultAttributes(const UObject* WorldContextObject, ECharacterClass CharacterClass, float Level, UAbilitySystemComponent* ASC);
 

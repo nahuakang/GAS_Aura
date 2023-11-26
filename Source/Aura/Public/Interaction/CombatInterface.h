@@ -22,6 +22,12 @@ public:
 	virtual void Die() = 0;
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	AActor* GetAvatar();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	bool IsDead() const;
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	FVector GetCombatSocketLocation();
 
 	// BlueprintNativeEvent can be used on BP but also override-able in C++; additionally make it BlueprintCallable

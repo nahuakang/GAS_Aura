@@ -25,7 +25,11 @@ public:
 	//~ End AActor Interface.
 
 	//~ Begin Combat Interface.
-	virtual void Die() override;
+	virtual void          Die() override;
+	virtual FVector       GetCombatSocketLocation_Implementation() override;
+	virtual UAnimMontage* GetHitReactMontage_Implementation() override;
+	virtual AActor*       GetAvatar_Implementation() override;
+	virtual bool          IsDead_Implementation() const override;
 	//~ End Combat Interface.
 
 	//~ Begin IAbilitySystemInterface Interface.
@@ -54,13 +58,10 @@ protected:
 	void StartWeaponDissolveTimeline(UMaterialInstanceDynamic* DynamicMaterialInstance);
 	//~ End Dissolve Effects
 
-	//~ Begin Combat Interface.
-	virtual FVector       GetCombatSocketLocation_Implementation() override;
-	virtual UAnimMontage* GetHitReactMontage_Implementation() override;
-	//~ End Combat Interface.
-
 	virtual void InitAbilityActorInfo();
 	virtual void InitializeDefaultAttributes() const;
+
+	bool bDead = false;
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	TObjectPtr<USkeletalMeshComponent> Weapon;

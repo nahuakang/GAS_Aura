@@ -50,6 +50,7 @@ void AAuraCharacterBase::MulticastHandleDeath_Implementation()
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
 	Dissolve();
+	bDead = true;
 }
 
 void AAuraCharacterBase::BeginPlay()
@@ -107,6 +108,16 @@ FVector AAuraCharacterBase::GetCombatSocketLocation_Implementation()
 UAnimMontage* AAuraCharacterBase::GetHitReactMontage_Implementation()
 {
 	return HitReactMontage;
+}
+
+AActor* AAuraCharacterBase::GetAvatar_Implementation()
+{
+	return this;
+}
+
+bool AAuraCharacterBase::IsDead_Implementation() const
+{
+	return bDead;
 }
 
 void AAuraCharacterBase::InitAbilityActorInfo() {}
