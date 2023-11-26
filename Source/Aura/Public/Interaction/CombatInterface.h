@@ -43,7 +43,7 @@ public:
 	AActor* GetAvatar();
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	FVector GetCombatSocketLocation();
+	FVector GetCombatSocketLocation(const FGameplayTag& MontageTag);
 
 	// BlueprintNativeEvent can be used on BP but also override-able in C++; additionally make it BlueprintCallable
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
