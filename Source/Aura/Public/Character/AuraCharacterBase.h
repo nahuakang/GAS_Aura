@@ -25,11 +25,12 @@ public:
 	//~ End AActor Interface.
 
 	//~ Begin Combat Interface.
-	virtual void          Die() override;
-	virtual FVector       GetCombatSocketLocation_Implementation() override;
-	virtual UAnimMontage* GetHitReactMontage_Implementation() override;
-	virtual AActor*       GetAvatar_Implementation() override;
-	virtual bool          IsDead_Implementation() const override;
+	virtual void                   Die() override;
+	virtual TArray<FTaggedMontage> GetAttackMontages_Implementation() override;
+	virtual FVector                GetCombatSocketLocation_Implementation() override;
+	virtual UAnimMontage*          GetHitReactMontage_Implementation() override;
+	virtual AActor*                GetAvatar_Implementation() override;
+	virtual bool                   IsDead_Implementation() const override;
 	//~ End Combat Interface.
 
 	//~ Begin IAbilitySystemInterface Interface.
@@ -39,6 +40,9 @@ public:
 
 	UFUNCTION(NetMulticast, Reliable)
 	virtual void MulticastHandleDeath();
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TArray<FTaggedMontage> AttackMontages;
 
 protected:
 	//~ Begin AActor Interface.
