@@ -53,7 +53,7 @@ public:
 	UNiagaraSystem* GetBloodEffect();
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	FVector GetCombatSocketLocation(const FGameplayTag& MontageTag);
+	FVector GetCombatSocketLocation(const FGameplayTag& SocketTag);
 
 	// BlueprintNativeEvent can be used on BP but also override-able in C++; additionally make it BlueprintCallable
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
