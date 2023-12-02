@@ -57,9 +57,14 @@ struct FAuraGameplayTags
 	FGameplayTag Abilities_Attack;
 
 	/** Attack Montage Tags */
-	FGameplayTag Montage_Attack_LeftHand;
-	FGameplayTag Montage_Attack_RightHand;
-	FGameplayTag Montage_Attack_Weapon;
+	FGameplayTag CombatSocket_LeftHand;
+	FGameplayTag CombatSocket_RightHand;
+	FGameplayTag CombatSocket_Weapon;
+
+	FGameplayTag Montage_Attack_1;
+	FGameplayTag Montage_Attack_2;
+	FGameplayTag Montage_Attack_3;
+	FGameplayTag Montage_Attack_4;
 
 	/** Hit React Tag */
 	FGameplayTag Effects_HitReact;

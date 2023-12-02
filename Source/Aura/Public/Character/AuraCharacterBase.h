@@ -28,10 +28,11 @@ public:
 	//~ Begin Combat Interface.
 	virtual void                   Die() override;
 	virtual TArray<FTaggedMontage> GetAttackMontages_Implementation() override;
+	virtual AActor*                GetAvatar_Implementation() override;
 	virtual UNiagaraSystem*        GetBloodEffect_Implementation() override;
 	virtual FVector                GetCombatSocketLocation_Implementation(const FGameplayTag& MontageTag) override;
 	virtual UAnimMontage*          GetHitReactMontage_Implementation() override;
-	virtual AActor*                GetAvatar_Implementation() override;
+	virtual FTaggedMontage         GetTaggedMontageByTag_Implementation(const FGameplayTag& MontageTag) override;
 	virtual bool                   IsDead_Implementation() const override;
 	//~ End Combat Interface.
 
